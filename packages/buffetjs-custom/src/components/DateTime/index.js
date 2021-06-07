@@ -44,6 +44,7 @@ function DateTime({
   value,
   tabIndex,
   step,
+  seconds,
   ...rest
 }) {
   const [timestamp, setTimestamp] = useState(null);
@@ -109,7 +110,7 @@ function DateTime({
         onChange={({ target }) => {
           setData(target.value);
         }}
-        seconds={false}
+        seconds={seconds}
         tabIndex={tabIndex}
         value={getTimeString(timestamp) || ''}
         step={step}
@@ -127,6 +128,7 @@ DateTime.defaultProps = {
   tabIndex: '0',
   value: null,
   withDefaultValue: false,
+  seconds: false,
   step: 30,
 };
 
@@ -137,6 +139,7 @@ DateTime.propTypes = {
   name: PropTypes.string.isRequired,
   onChange: PropTypes.func,
   placeholder: PropTypes.string,
+  seconds: PropTypes.bool,
   step: PropTypes.number,
   tabIndex: PropTypes.string,
   value: PropTypes.oneOfType([
